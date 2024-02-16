@@ -4,7 +4,8 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="container">
+    <div class="container-fluid">
+      <div class="container">
         <div class="row">
           <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
             <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid rounded">
@@ -28,5 +29,6 @@
           </a>
         </div>
       </div>
+    </div>
     
 </x-app-layout>

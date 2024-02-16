@@ -23,6 +23,12 @@
                         {{ __('Your Galley') }}
                     </x-nav-link>
                 </div>
+                {{-- form input --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('inputimage')" :active="request()->routeIs('inputimage')">
+                        {{ __('input image') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
