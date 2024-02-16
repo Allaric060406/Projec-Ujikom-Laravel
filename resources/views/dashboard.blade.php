@@ -4,15 +4,29 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
+    <div class="container">
+        <div class="row">
+          <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+            <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid rounded">
+          </a>
+          <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+            <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid rounded">
+          </a>
+          <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid rounded">
+          </a>
         </div>
-    </div>
+        <div class="row">
+          <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+            <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid rounded">
+          </a>
+          <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+            <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid rounded">
+          </a>
+          <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+            <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid rounded">
+          </a>
+        </div>
+      </div>
     
 </x-app-layout>
