@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="container-fluid">
+    <div class="container-fluid bg-zinc-50">
       <div class="container">
         <div class="row">
           <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">

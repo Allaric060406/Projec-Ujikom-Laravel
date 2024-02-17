@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function (){
     Route::get('/inputimage',[UploadController::class,'inputimage'])->name('inputimage');
+    Route::post('/inputimage',[UploadController::class,'upload'])->name('upload');
 });
 
 require __DIR__.'/auth.php';

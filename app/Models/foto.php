@@ -16,8 +16,9 @@ class foto extends Model
     protected $fillable =
     [
         'judulfoto',
+        'imagefile',
         'deksipsifoto',
-        'loakasifoto'
+        'lokasifoto'
     ];
 
     public function user(): BelongsTo
