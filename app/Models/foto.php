@@ -10,14 +10,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class foto extends Model
 {
     use HasFactory;
-    protected $table ='foto';
+    protected $table ='fotos';
     protected $primarykey = 'foto_id';
     
     protected $fillable =
     [
+        'user_id',
+        'album_id',
         'judulfoto',
         'imagefile',
-        'deksipsifoto',
+        'deskripsifoto',
         'lokasifoto'
     ];
 

@@ -7,15 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class album extends Model
+class Album extends Model
 {
     use HasFactory;
+
     protected $table = 'albums';
-    protected $primarykey = 'album_id';
+    protected $primaryKey = 'album_id';
 
     protected $fillable = [
+        'user_id',
         'namaalbum',
-        'deskiripsi',
+        'deskripsi',
         'tanggaldibuat'
     ];
 

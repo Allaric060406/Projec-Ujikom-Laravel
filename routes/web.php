@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function (){
     Route::get('/inputimage',[UploadController::class,'inputimage'])->name('inputimage');
     Route::post('/inputimage',[UploadController::class,'upload'])->name('upload');
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/showalbum',[AlbumController::class,'showAlbum'])->name('showAlbum');
+    Route::post('/uploadalbum',[AlbumController::class,'uploadalbum'])->name('uploadalbum');
 });
 
 require __DIR__.'/auth.php';

@@ -19,14 +19,14 @@
                 </div>
                 {{-- Your Gallery --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('showAlbum')" :active="request()->routeIs('showAlbum')">
                         {{ __('Your Galley') }}
                     </x-nav-link>
                 </div>
                 {{-- form input --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('inputimage')" :active="request()->routeIs('inputimage')">
-                        {{ __('input image') }}
+                        {{ __('Upload Image') }}
                     </x-nav-link>
                 </div>
             </div>
