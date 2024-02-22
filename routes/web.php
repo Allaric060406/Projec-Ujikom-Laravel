@@ -44,4 +44,9 @@ Route::middleware('auth')->group(function(){
     Route::post('/uploadalbum',[AlbumController::class,'uploadalbum'])->name('uploadalbum');
 });
 
+Route::middleware('auth')->group(function(){
+    // Route::get('/delete/{id}',[showuploadcontroller::class,'detele'])->name('delete');
+    Route::delete('/foto/{id}', [showuploadcontroller::class, 'delete'])->name('foto.delete');
+});
+
 require __DIR__.'/auth.php';

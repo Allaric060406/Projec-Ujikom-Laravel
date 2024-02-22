@@ -15,4 +15,17 @@ class showuploadcontroller extends Controller
         $User = foto::with('album')->where('user_id', $User)->get();
         return view('showupload', compact('User'));
     }
+
+    public function delete($id)
+    {
+
+        $foto = Foto::find($id);
+
+        if (!$foto) {
+            return redirect()->back()->with('error', 'Foto tidak ditemukan.');
+        }
+
+        $foto->delete();
+        return redirect()->back()->with('success', 'Foto berhasil dihapus.');
+    }
 }
