@@ -11,7 +11,7 @@
                     @csrf
                     <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
                     <div class="form-group">
-                        <label for="namaalbum" class=" form-control-label " >Nama album</label>
+                        <label for="namaalbum" class=" form-control-label " >Name Album</label>
                         <input type="text" name="namaalbum" id="namaalbum"  value="{{old('namaalbum')}}" placeholder="add your title" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500 ">
                             <div class="invalid-feedback">
                                 @error('namaalbum')
@@ -20,7 +20,7 @@
                             </div>
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi" class=" form-control-label " >deskripsi</label>
+                        <label for="deskripsi" class=" form-control-label " >Description</label>
                         <input type="text" name="deskripsi" id="deskripsi"  value="{{old('deskripsi')}}" placeholder="add your title" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500 ">
                             <div class="invalid-feedback">
                                 @error('deskripsi')

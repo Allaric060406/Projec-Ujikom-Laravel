@@ -25,12 +25,12 @@ class foto extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
 
-    public function album(): HasMany
+    public function album(): BelongsTo
     {
-        return $this->hasMany(foto::class);
+        return $this->belongsTo(Album::class,'album_id','id');
     }
 
     public function komentar(): HasMany

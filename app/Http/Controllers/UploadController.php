@@ -35,7 +35,7 @@ class UploadController extends Controller
         Foto::create([
             'judulfoto' => $request->judulfoto,
             'imagefile' => $imageName,
-            'album_id' =>$request->album_id,
+            'album_id' => $request->album_id,
             'deskripsifoto' => $request->deskripsifoto,
             'lokasifoto' => $request->lokasifoto,
             // Jika diperlukan, tambahkan bidang lainnya sesuai kebutuhan

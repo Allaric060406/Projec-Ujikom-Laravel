@@ -33,7 +33,7 @@
                                 </div>
                         </div>                                                             
                         <div class="form-group mt-3">
-                            <label for="lokasifoto" class=" form-control-label">Description</label>
+                            <label for="lokasifoto" class=" form-control-label">Lokasi Foto</label>
                             <input type="text" name="lokasifoto"  value="{{old('lokasifoto')}}" id="lokasifoto" placeholder="add detailed Description" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500  @error('nama') is-invalid @enderror">
                                 <div class="invalid-feedback">
                                     @error('lokasifoto')

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\showuploadcontroller;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'indexDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,6 +39,7 @@ Route::middleware('auth')->group(function (){
 });
 
 Route::middleware('auth')->group(function(){
+    Route::get('/showupload',[showuploadcontroller::class,'showupload'])->name('showupload');
     Route::get('/showalbum',[AlbumController::class,'showAlbum'])->name('showAlbum');
     Route::post('/uploadalbum',[AlbumController::class,'uploadalbum'])->name('uploadalbum');
 });
