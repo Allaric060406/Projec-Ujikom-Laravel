@@ -44,8 +44,9 @@ Route::middleware('auth')->group(function(){
     Route::post('/uploadalbum',[AlbumController::class,'uploadalbum'])->name('uploadalbum');
 });
 
+// function action dalam Table show data
 Route::middleware('auth')->group(function(){
-    // Route::get('/delete/{id}',[showuploadcontroller::class,'detele'])->name('delete');
+    Route::put('/foto/{id}', [showuploadcontroller::class, 'update'])->name('foto.update');
     Route::delete('/foto/{id}', [showuploadcontroller::class, 'delete'])->name('foto.delete');
 });
 
