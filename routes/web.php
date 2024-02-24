@@ -22,9 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard',[DashboardController::class,'indexDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -46,8 +43,9 @@ Route::middleware('auth')->group(function(){
 
 // function action dalam Table show data
 Route::middleware('auth')->group(function(){
-    Route::put('/foto/{id}', [showuploadcontroller::class, 'update'])->name('foto.update');
-    Route::delete('/foto/{id}', [showuploadcontroller::class, 'delete'])->name('foto.delete');
+    Route::delete('/foto/{id}', [UploadController::class, 'delete'])->name('foto.delete');
+    Route::get('/viewupdate/{id}', [UploadController::class, 'viewupdate']);
+    Route::post('/foto/update/{id}', [UploadController::class, 'update'])->name('foto.update');
 });
 
 require __DIR__.'/auth.php';
