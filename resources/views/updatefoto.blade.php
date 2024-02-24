@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-4 offset-1">
                     @if ($data->imagefile)
-                        <img src="{{ asset('images/' . $data->imagefile) }}" alt="Previous Image" id="preview" class="mt-4">
+                        <img src="{{ asset('images/' . $data->imagefile) }}" alt="Previous Image" id="preview" class="mt-4 w-full h-auto">
                     @else
                         <!-- Tampilkan pesan jika tidak ada gambar sebelumnya -->
                         <p>No previous image available</p>

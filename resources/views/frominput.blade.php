@@ -9,14 +9,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-4 offset-1">
-                    <img id="preview"  />
+                    <img id="preview" class="w-full h-auto" />
                 </div>
                 <div class="col-5 offset-1">
                     <form action="/inputimage" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="judulfoto" class=" form-control-label " >Title</label>
-                            <input type="text" name="judulfoto" id="judulfoto"  value="{{old('judulfoto')}}" placeholder="add your title" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500 ">
+                            <input type="text" name="judulfoto" id="judulfoto"  value="{{old('judulfoto')}}" placeholder="add your title" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500" required>
                                 <div class="invalid-feedback">
                                     @error('judulfoto')
                                        {{ $message }}
@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group mt-3">
                             <label for="deskripsifoto" class=" form-control-label">Description</label>
-                            <input type="text" name="deskripsifoto"  value="{{old('deskripsifoto')}}" id="deskripsifoto" placeholder="add detailed Description" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500  @error('nama') is-invalid @enderror">
+                            <input type="text" name="deskripsifoto"  value="{{old('deskripsifoto')}}" id="deskripsifoto" placeholder="add detailed Description" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500  @error('deskripsifoto') is-invalid @enderror">
                                 <div class="invalid-feedback">
                                     @error('deskripsifoto')
                                        {{ $message }}
@@ -34,7 +34,7 @@
                         </div>                                                             
                         <div class="form-group mt-3">
                             <label for="lokasifoto" class=" form-control-label">Lokasi Foto</label>
-                            <input type="text" name="lokasifoto"  value="{{old('lokasifoto')}}" id="lokasifoto" placeholder="add detailed Description" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500  @error('nama') is-invalid @enderror">
+                            <input type="text" name="lokasifoto"  value="{{old('lokasifoto')}}" id="lokasifoto" placeholder="add detailed Description" class="form-control rounded-xl  border-3 h-12 border-hidden focus:border-blue-400 ring-2 ring-blue-500 ring-offset-1 outline-blue-500  @error('lokasifoto') is-invalid @enderror">
                                 <div class="invalid-feedback">
                                     @error('lokasifoto')
                                        {{ $message }}
