@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('judulfoto');
             $table->text('deskripsifoto');
-            $table->string('lokasifoto');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreignId('album_id')->references('id')->on('albums')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamp('tanggalunggah')->useCurrent();

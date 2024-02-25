@@ -9,28 +9,45 @@ class AlbumController extends Controller
 {
     public function showAlbum()
     {
-        return view('Your_Gallery');
+        // Mendapatkan ID pengguna yang saat ini masuk
+        $userId = auth()->id();
+    
+        // Mengambil data Album berdasarkan ID pengguna yang masuk
+        $coverimage = Album::where('user_id', $userId)->get();
+    
+        return view('Your_Gallery', compact('coverimage'));
     }
 
     public function uploadalbum(Request $request)
     {
-        // Validasi data yang diterima dari formulir
-        $validatedData = $request->validate([
-            'user_id'=>'required',
-            'namaalbum' => 'required',
-            'deskripsi' => 'required',
-            'tanggal_dibuat' => 'required|date',
+        $request->validate([
+            'namaalbum' => 'required|string|max:255',
+            'coverimage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'tanggal_dibuat' => 'required|date', // Sesuaikan dengan kebutuhan
+            'deskripsi' => 'nullable|string',
         ]);
-        // Membuat album baru
-        $album = album::create($validatedData);
 
-        // Jika album berhasil dibuat, redirect pengguna ke halaman lain
-        if ($album) {
-            return redirect()->route('dashboard')->with('success', 'Album berhasil dibuat!');
-        } else {
-            // Jika gagal, kembali ke halaman pembuatan album dengan pesan kesalahan
-            return back()->withInput()->with('error', 'Gagal membuat album. Silakan coba lagi.');
-        }
+        // Mengambil file foto dari request
+        $image = $request->file('coverimage');
+        // Membuat nama unik untuk file foto
+        $imageName = time().'.'.$image->extension();
+        // Menyimpan file foto ke dalam folder public/images
+        $image->move(public_path('images'), $imageName);
 
+        // Membuat entri baru dalam database
+        album::create([
+            'namaalbum' => $request->namaalbum,
+            'coverimage' => $imageName,
+            'tanggal_dibuat' => $request->tanggal_dibuat,
+            'deskripsi' => $request->deskripsi,
+            // Jika diperlukan, tambahkan bidang lainnya sesuai kebutuhan
+            'user_id' => auth()->user()->id,
+        ]);
+
+        // Redirect ke halaman tertentu atau berikan respons sesuai kebutuhan
+        return redirect()->route('inputimage')->with('success', 'Foto berhasil diunggah!');
     }
+
+
+
 }

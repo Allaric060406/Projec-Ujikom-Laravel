@@ -20,7 +20,6 @@ class foto extends Model
         'judulfoto',
         'imagefile',
         'deskripsifoto',
-        'lokasifoto'
     ];
 
     public function user(): BelongsTo

@@ -11,8 +11,13 @@ class UploadController extends Controller
 {
     public function inputimage()
     {
-        $datacategory = Album::all();
-        return view('frominput',compact('datacategory'));
+        // Mendapatkan ID pengguna yang saat ini masuk
+        $userId = auth()->id();
+    
+        // Mengambil data Album berdasarkan ID pengguna yang masuk
+        $datacategory = Album::where('user_id', $userId)->get();
+    
+        return view('frominput', compact('datacategory'));
     }
 
     public function viewupdate(Request $request,$id)
@@ -29,7 +34,6 @@ class UploadController extends Controller
             'judulfoto' => 'required|string|max:255',
             'imagefile' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'album_id' => 'required', // Sesuaikan dengan kebutuhan
-            'lokasifoto' =>'nullable|string',
             'deskripsifoto' => 'nullable|string',
         ]);
 
@@ -46,7 +50,6 @@ class UploadController extends Controller
             'imagefile' => $imageName,
             'album_id' => $request->album_id,
             'deskripsifoto' => $request->deskripsifoto,
-            'lokasifoto' => $request->lokasifoto,
             // Jika diperlukan, tambahkan bidang lainnya sesuai kebutuhan
             'user_id' => auth()->user()->id,
         ]);
@@ -61,7 +64,6 @@ class UploadController extends Controller
             'judulfoto' => 'required|string|max:255',
             'imagefile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'album_id' => 'required', // Sesuaikan dengan kebutuhan
-            'lokasifoto' =>'nullable|string',
             'deskripsifoto' => 'nullable|string',
         ]);
 
@@ -78,7 +80,6 @@ class UploadController extends Controller
         // Memperbarui data lainnya
         $foto->judulfoto = $request->judulfoto;
         $foto->album_id = $request->album_id;
-        $foto->lokasifoto = $request->lokasifoto;
         $foto->deskripsifoto = $request->deskripsifoto;
 
         // Menyimpan perubahan ke dalam database
