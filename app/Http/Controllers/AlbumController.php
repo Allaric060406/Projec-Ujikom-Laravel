@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\album;
+use App\Models\foto;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
@@ -16,6 +17,14 @@ class AlbumController extends Controller
         $coverimage = Album::where('user_id', $userId)->get();
     
         return view('Your_Gallery', compact('coverimage'));
+    }
+
+    public function showPhotos($albumId)
+    {
+        // Mengambil data foto berdasarkan album_id
+        $Detailalbum = foto::where('album_id', $albumId)->get();
+        
+        return view('detailalbum', compact('Detailalbum'));
     }
 
     public function uploadalbum(Request $request)

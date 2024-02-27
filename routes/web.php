@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function (){
 Route::middleware('auth')->group(function(){
     Route::get('/showupload',[showuploadcontroller::class,'showupload'])->name('showupload');
     Route::get('/showalbum',[AlbumController::class,'showAlbum'])->name('showAlbum');
+    Route::get('/album/{album}', [AlbumController::class,'showPhotos'])->name('showPhotos');
     Route::post('/uploadalbum',[AlbumController::class,'uploadalbum'])->name('uploadalbum');
 });
 

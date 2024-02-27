@@ -72,8 +72,8 @@
                         <div class="bg-gray-200 p-8">
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                 @foreach ($coverimage as $ci)
-                                    <a href="{{ $ci->id }}" class="relative overflow-hidden bg-gray-400 rounded-xl group">
-                                        <img src="{{ asset('images/' . $ci->coverimage) }}" alt="{{ $ci->namaci }}" class="w-full h-full object-cover">
+                                    <a href="{{ route('showPhotos', ['album' => $ci->id]) }}" class="relative overflow-hidden bg-gray-400 rounded-xl group">
+                                        <img src="{{ asset('images/' . $ci->coverimage) }}" alt="{{ $ci->coverimage }}" class="w-full h-full object-cover">
                                         <div class="absolute inset-0 flex items-center justify-center opacity-0 bg-black bg-opacity-50 group-hover:opacity-100 transition-opacity duration-300">
                                             <span class="text-white text-lg font-semibold">{{ $ci->namaalbum }}</span>
                                         </div>
