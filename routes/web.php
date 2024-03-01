@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\komentarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\showuploadcontroller;
 use App\Http\Controllers\UploadController;
@@ -54,6 +55,14 @@ Route::middleware('auth')->group(function(){
     Route::delete('/foto/{id}', [UploadController::class, 'delete'])->name('foto.delete');
     Route::get('/viewupdate/{id}', [UploadController::class, 'viewupdate']);
     Route::post('/foto/update/{id}', [UploadController::class, 'update'])->name('foto.update');
+});
+
+
+// Komentar file
+Route::middleware('auth')->group(function(){
+    Route::get('/komentar/{fotoId}', [komentarController::class,'showKomentarFoto'])->name('komentar.foto');
+    Route::post('/komentar/create/{id}', [KomentarController::class, 'createKomentar'])->name('createKomentar');
+
 });
 
 require __DIR__.'/auth.php';

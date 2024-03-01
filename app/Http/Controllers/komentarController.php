@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\foto;
 use App\Models\komentarfoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,26 +10,35 @@ use Illuminate\Support\Facades\Auth;
 class komentarController extends Controller
 {
 
-    
-    // create komentar
-    public function createKomentar($fotoId, $isiKomentar)
+    // show Comentar
+    public function showKomentarFoto(komentarfoto $komentar, $foto_id)
     {
-        // Membuat komentar baru
-        $komentar = new komentarfoto();
-        $komentar->isikomentar = $isiKomentar;
-        $komentar->foto_id = $fotoId; // Menggunakan ID foto yang diberikan
+        // Temukan foto berdasarkan ID yang diberikan
+        $foto = foto::findOrFail($foto_id);
 
-        // Menyimpan ID pengguna yang membuat komentar (jika ada pengguna yang sedang terautentikasi)
-        if (Auth::check()) {
-            $komentar->user_id = Auth::user()->id;
-        }
+        // Ambil semua komentar yang terkait dengan foto tersebut
+        $komentar = komentarfoto::where('foto_id', $foto_id)->with('user')->get();
 
-        // Menyimpan komentar
+        return view('komentarview', compact('foto', 'komentar'));
+    }
+
+
+    // Post Komentar
+    public function createKomentar(Request $request, $id)
+
+    {
+        $request->validate([
+            'isikomentar' => 'required|string|max:255',
+        ]);
+    
+        $foto = Foto::findOrFail($id);
+    
+        $komentar = new KomentarFoto();
+        $komentar->user_id = Auth::id();
+        $komentar->foto_id = $foto->id;
+        $komentar->isikomentar = $request->isikomentar;
         $komentar->save();
-
-        // Mengembalikan komentar yang baru dibuat
-        return $komentar;
-
         
+        return redirect()->route('komentar.foto', $foto->id)->with('success', 'Komentar berhasil ditambahkan');
     }
 }

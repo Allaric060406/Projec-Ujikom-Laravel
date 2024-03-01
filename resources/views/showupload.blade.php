@@ -132,7 +132,6 @@
                                         </div>
                                     </div>
                                 </div> 
-                                
                             </td>
                             <td>
                                 <form id="deleteForm{{$shw->id}}" action="{{ route('foto.delete', $shw->id) }}" method="post">
