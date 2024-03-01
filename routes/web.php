@@ -41,6 +41,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/album/{album}', [AlbumController::class,'showPhotos'])->name('showPhotos');
     Route::post('/uploadalbum',[AlbumController::class,'uploadalbum'])->name('uploadalbum');
     Route::delete('/showalbum/{id}',[AlbumController::class,'delete'])->name('delete');
+
+    // Route untuk menampilkan form edit album
+    Route::get('/albums/{id}/edit', [AlbumController::class, 'showeditalbum'])->name('editAlbum');
+    
+    // Route untuk menyimpan perubahan pada album
+    Route::put('/albums/{id}', [AlbumController::class, 'updatealbum'])->name('updateAlbum');
 });
 
 // function action dalam Table show data

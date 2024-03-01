@@ -11,7 +11,6 @@
                 <div class="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
                     <div class="w-full flex justify-start text-gray-600 mb-3">
                     </div>
-
                     <form action="{{ route('uploadalbum') }}" method="post" enctype="multipart/form-data">
                         @csrf
                                 <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4 text-center">Upload Your Album</h1>
@@ -79,19 +78,25 @@
                                         <form id="deleteForm{{$ci->id}}" action="{{ route('delete', $ci->id) }}" method="post" class="absolute top-0 right-0 m-2">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-transparan px-3 py-1 text-white rounded-full flex items-center deleteButton" data-id="{{$ci->id}}">
+                                            <button type="submit" class="bg-transparan px-3 py-1 text-blue-400 rounded-full flex items-center deleteButton" data-id="{{$ci->id}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-1" width="24" height="24">
                                                     <path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.7 23.7 0 0  0 -21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0 -16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"/>
                                                 </svg>
                                             </button>
                                         </form>
+                                        <form action="{{ route('editAlbum', ['id' => $ci->id]) }}" method="get" class="absolute top-0 left-0 m-2">
+                                            @csrf
+                                            <button type="submit" class="bg-transparent px-3 py-1 text-blue-400 rounded-full flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 mr-1" width="24" height="24">
+                                                    <path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75zM4.25 18.75L1 22h3.25z"/>
+                                                </svg>
+                                            </button>
+                                        </form>                                                                                                                    
                                     </div>
                                 </a>
                                 @endforeach
                             </div>
                         </div>
-                        
-                        
     <script>
         let modal = document.getElementById("modal");
         function modalHandler(open) {

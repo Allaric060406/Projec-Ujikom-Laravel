@@ -56,10 +56,48 @@ class AlbumController extends Controller
         ]);
 
         // Redirect ke halaman tertentu atau berikan respons sesuai kebutuhan
-        return redirect()->route('inputimage')->with('success', 'Foto berhasil diunggah!');
+        return redirect()->route('showAlbum')->with('success', 'Foto berhasil diunggah!');
     }
 
+    // show form edit album
+    public function showeditalbum($id)
+    {
+        $albumedit = Album::findOrFail($id);
+        // Anda dapat menyesuaikan view yang digunakan sesuai dengan kebutuhan aplikasi Anda
+        return view('updatealbum', compact('albumedit'));
+    }
 
+    // fungsi edit post album
+    public function updatealbum(Request $request, $id)
+    {
+        $album = Album::findOrFail($id);
+
+        // Validate input
+        $validatedData = $request->validate([
+            'namaalbum' => 'required|string|max:255',
+            'coverimage' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming 2MB as maximum size
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        // Update album data
+        $album->namaalbum = $validatedData['namaalbum'];
+        $album->deskripsi = $validatedData['deskripsi'];
+
+        // Handle cover image update
+        if ($request->hasFile('coverimage')) {
+            $image = $request->file('coverimage');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $album->coverimage = $imageName;
+        }
+
+        // Save changes
+        $album->save();
+
+        return redirect()->route('showAlbum', ['album' => $album->id])->with('success', 'Album berhasil diperbarui');
+    }
+
+    // Delete Album
     public function delete($id)
     {
         $al = Album::find($id);
