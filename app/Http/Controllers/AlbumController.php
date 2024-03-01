@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\album;
+use App\Models\Album;
 use App\Models\foto;
 use Illuminate\Http\Request;
 
@@ -24,7 +24,9 @@ class AlbumController extends Controller
         // Mengambil data foto berdasarkan album_id
         $Detailalbum = foto::where('album_id', $albumId)->get();
         
-        return view('detailalbum', compact('Detailalbum'));
+        return view('detailalbum', [
+            'Detailalbum' => $Detailalbum,
+        ]);
     }
 
     public function uploadalbum(Request $request)
@@ -58,5 +60,15 @@ class AlbumController extends Controller
     }
 
 
+    public function delete($id)
+    {
+        $al = Album::find($id);
+        if (!$al) {
+            return redirect()->back()->with('error', 'al tidak ditemukan.');
+        }
+        // Album::destroy($album->id);
+        $al->delete();
+        return redirect()->back()->with('success', 'al berhasil dihapus.');
+    }
 
 }

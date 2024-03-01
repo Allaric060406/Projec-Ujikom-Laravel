@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Detailalbum') }}
+            {{ __('DetailAlbum') }}
         </h2>
     </x-slot>
-    <div class="bg-gray-200 p-8">
+    <div class="bg-gray-200 p-8">       
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             @if ($Detailalbum->isEmpty())
                 <div class="flex justify-center items-center h-full">
@@ -24,3 +24,4 @@
     </div>
     
 </x-app-layout>
+

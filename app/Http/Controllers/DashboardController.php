@@ -10,7 +10,6 @@ class DashboardController extends Controller
     public function indexDashboard()
     {
         $semuaFoto = Foto::all();
-        
         return view('dashboard', ['semuaFoto' => $semuaFoto]);
     }
 }

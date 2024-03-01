@@ -12,7 +12,7 @@ class Album extends Model
     use HasFactory;
 
     protected $table = 'albums';
-    protected $primaryKey = 'album_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'user_id',

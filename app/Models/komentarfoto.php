@@ -15,13 +15,13 @@ class komentarfoto extends Model
         'isikomentar'
     ];
 
-    public function komentar(): BelongsTo
+    public function foto(): BelongsTo
     {
-        return $this->belongsTo(foto::class);
+        return $this->belongsTo(foto::class,'foto_id','id');
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

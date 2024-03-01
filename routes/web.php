@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/showalbum',[AlbumController::class,'showAlbum'])->name('showAlbum');
     Route::get('/album/{album}', [AlbumController::class,'showPhotos'])->name('showPhotos');
     Route::post('/uploadalbum',[AlbumController::class,'uploadalbum'])->name('uploadalbum');
+    Route::delete('/showalbum/{id}',[AlbumController::class,'delete'])->name('delete');
 });
 
 // function action dalam Table show data

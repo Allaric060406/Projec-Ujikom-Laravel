@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('ShowAlbum') }}
-        </h2>
+        </h2>   
     </x-slot>
     <dh-component>
         <div class="py-12 transition duration-150 ease-in-out z-10 fixed top-0 right-0 bottom-0 left-0" id="modal" style="display:none;">
@@ -72,15 +72,25 @@
                         <div class="bg-gray-200 p-8">
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                 @foreach ($coverimage as $ci)
-                                    <a href="{{ route('showPhotos', ['album' => $ci->id]) }}" class="relative overflow-hidden bg-gray-400 rounded-xl group">
-                                        <img src="{{ asset('images/' . $ci->coverimage) }}" alt="{{ $ci->coverimage }}" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 bg-black bg-opacity-50 group-hover:opacity-100 transition-opacity duration-300">
-                                            <span class="text-white text-lg font-semibold">{{ $ci->namaalbum }}</span>
-                                        </div>
-                                    </a>
+                                <a href="{{ route('showPhotos', ['album' => $ci->id]) }}" class="relative overflow-hidden bg-gray-400 rounded-xl group">
+                                    <img src="{{ asset('images/' . $ci->coverimage) }}" alt="{{ $ci->coverimage }}" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 bg-black bg-opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                                        <span class="text-white text-lg font-semibold">{{ $ci->namaalbum }}</span>
+                                        <form id="deleteForm{{$ci->id}}" action="{{ route('delete', $ci->id) }}" method="post" class="absolute top-0 right-0 m-2">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-transparan px-3 py-1 text-white rounded-full flex items-center deleteButton" data-id="{{$ci->id}}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-1" width="24" height="24">
+                                                    <path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.7 23.7 0 0  0 -21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0 -16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"/>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </a>
                                 @endforeach
                             </div>
                         </div>
+                        
                         
     <script>
         let modal = document.getElementById("modal");
