@@ -62,6 +62,12 @@ Route::middleware('auth')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/komentar/{fotoId}', [komentarController::class,'showKomentarFoto'])->name('komentar.foto');
     Route::post('/komentar/create/{id}', [KomentarController::class, 'createKomentar'])->name('createKomentar');
+    Route::delete('/komentar/{id}', [komentarController::class,'hapusKomentar'])->name('komentar.hapus');
+});
+
+// like 
+Route::middleware('auth')->group(function(){
+    Route::post('/like/{photo}',[likecontroller::class,'like'])->name('like.photo');
 
 });
 

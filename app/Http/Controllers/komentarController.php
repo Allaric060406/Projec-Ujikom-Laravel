@@ -41,4 +41,21 @@ class komentarController extends Controller
         
         return redirect()->route('komentar.foto', $foto->id)->with('success', 'Komentar berhasil ditambahkan');
     }
+    
+    public function hapusKomentar($komentar_id)
+    {
+        // Cek apakah komentar dengan id yang diberikan ada dalam database
+        $komentar = KomentarFoto::find($komentar_id);
+        
+        if (!$komentar) {
+            return ['status' => 'error', 'message' => 'Komentar tidak ditemukan'];
+        }
+        
+        // Hapus komentar
+        $komentar->delete();
+        
+        // Redirect ke halaman sebelumnya
+        return redirect()->back()->with('success', 'Komentar berhasil dihapus');
+    }
+
 }

@@ -11,11 +11,6 @@ class likefoto extends Model
     use HasFactory;
     protected $table = 'likefotos';
 
-    protected $fillable = 
-    [
-        'TanggalLike',
-    ];
-
     public function like(): BelongsTo
     {
         return $this->belongsTo(foto::class);
