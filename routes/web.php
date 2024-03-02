@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\komentarController;
+use App\Http\Controllers\likecontroller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\showuploadcontroller;
 use App\Http\Controllers\UploadController;
@@ -68,6 +69,7 @@ Route::middleware('auth')->group(function(){
 // like 
 Route::middleware('auth')->group(function(){
     Route::post('/like/{photo}',[likecontroller::class,'like'])->name('like.photo');
+    Route::delete('/like/{id}',[likecontroller::class,'destroylike'])->name('destroylike.foto');
 
 });
 

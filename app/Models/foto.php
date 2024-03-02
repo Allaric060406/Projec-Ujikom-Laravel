@@ -41,4 +41,11 @@ class foto extends Model
     {
         return $this->hasMany(likefoto::class);
     }
+
+    public function likeBy($user)
+    {
+        $this->load('like');
+
+        return $this->like && $this->like->contains('user_id',$user->id);
+    }
 }
